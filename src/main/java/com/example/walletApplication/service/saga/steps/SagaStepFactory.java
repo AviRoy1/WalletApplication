@@ -1,6 +1,6 @@
 package com.example.walletApplication.service.saga.steps;
 
-import com.example.walletApplication.service.saga.SagaStep;
+import com.example.walletApplication.service.saga.SagaStepInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class SagaStepFactory {
 
-    private final Map<String, SagaStep> sagaStepMap;
+    private final Map<String, SagaStepInterface> sagaStepMap;
 
     public static enum SagaStepType {
         DEBIT_SOURCE_WALLET_STEP,
@@ -18,7 +18,7 @@ public class SagaStepFactory {
         UPDATE_TRANSACTION_STATUS_STEP
     }
 
-    public SagaStep getSagaStep(String stepName) {
+    public SagaStepInterface getSagaStep(String stepName) {
         return sagaStepMap.get(stepName);
     }
 
