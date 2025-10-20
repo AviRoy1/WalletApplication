@@ -2,6 +2,7 @@ package com.example.walletApplication.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -10,6 +11,7 @@ import org.hibernate.annotations.Type;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table(name = "saga_instance")
 public class SagaInstance {
 
@@ -24,6 +26,6 @@ public class SagaInstance {
     @Column(columnDefinition = "json")
     private String context;
 
-    @Column(name = "current_step", nullable = false)
+    @Column(name = "current_step")
     private String currentStep;
 }
