@@ -92,6 +92,7 @@ public class SagaOrchestratorImpl implements SagaOrchestrator {
     }
 
     @Override
+    @Transactional
     public boolean compensateStep(Long sagaInstanceId, String stepName) {
         SagaInstance sagaInstance = this.getSagaInstance(sagaInstanceId);
         SagaStepInterface sagaStepInterface = sagaStepFactory.getSagaStep(stepName);
@@ -141,6 +142,7 @@ public class SagaOrchestratorImpl implements SagaOrchestrator {
     }
 
     @Override
+    @Transactional
     public void compensateSaga(Long sagaInstanceId) {
         SagaInstance sagaInstance = getSagaInstance(sagaInstanceId);
 
@@ -168,6 +170,7 @@ public class SagaOrchestratorImpl implements SagaOrchestrator {
     }
 
     @Override
+    @Transactional
     public void failSaga(Long sagaInstanceId) {
         SagaInstance sagaInstance = getSagaInstance(sagaInstanceId);
         sagaInstance.setSagaStatus(SagaStatus.FAILED);
@@ -175,6 +178,7 @@ public class SagaOrchestratorImpl implements SagaOrchestrator {
     }
 
     @Override
+    @Transactional
     public void completeSaga(Long sagaInstanceId) {
         SagaInstance sagaInstance = getSagaInstance(sagaInstanceId);
         sagaInstance.setSagaStatus(SagaStatus.COMPLETED);
