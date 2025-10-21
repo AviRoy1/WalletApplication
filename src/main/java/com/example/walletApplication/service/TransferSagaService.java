@@ -56,7 +56,7 @@ public class TransferSagaService {
                     return;
                 }
             }
-            sagaOrchestrator.compensateSaga(sagaInstanceId);
+            sagaOrchestrator.completeSaga(sagaInstanceId);
             log.info("Transfer saga completed with id : {}", sagaInstanceId);
         } catch(Exception e) {
             log.error("Failed to execute transfer saga with id : {}", sagaInstanceId, e);
